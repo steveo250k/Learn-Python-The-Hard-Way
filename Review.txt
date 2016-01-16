@@ -1,0 +1,120 @@
+print -- prints to the console  everything between "" or ''.
+
+# -- is a comment.  Anything after the # is ignored by Python.
+
++, -, *, / -- Standard arithmetic operators for Add, Subtract, Multiply, and Divide.
+
+% -- Modulo operator.  Returns the remainder from an integer division.
+
+<, >, <=, >= -- Standard logical operators Less Than, Greater Than, Less Than or Equals to, Greater Than or Equals to.
+
+<variable name> = -- Assigning variables.
+
+print "string", variable, "string"
+
+String Formatting:
+%s -- string
+%d -- integer
+%r -- raw, sometimes an object.
+%f -- float
+print "string <format>" % variable
+print "string <formats>" % (variable1, variable2, ...)
+
+False, True -- Boolean keywords.
+
+import datetime
+d = datetime.date.today()
+
+str(d) -- converts argument to a string. Argument could be an integer or a date.
+repr(d) -- String representation of an object.  Similar to .toString in Java.
+
+formatter = "%r %r %r %r"
+
+print formatter % (1, 2, 3, 4)
+print formatter % ("one", "two", "three", "four")
+print formatter % (True, False, False, True)
+print formatter % (formatter, formatter, formatter, formatter)
+print formatter % (
+     "I had this thing.",
+	 "That you could type up right.",
+	 "But it didn't sing.", 
+	 "So I said goodnight."
+)
+
+Escape sequences:
+\n -- new line (LF).
+\t -- tab (TAB).
+\a -- bell (BEL).
+\\ -- backslash.
+\' -- print single quote.
+\" -- print double quote.
+\b -- backspace.
+\f -- formfeed (FF).
+\r -- carriage return (CR).
+\v -- vertical tab (VT)
+
+raw_input() -- Returns what the user types as a string.
+raw_input("?") -- Adds a prompt. 
+height = raw_input("How tall are you? ")
+int(raw_input) -- converts string to integer if possible.
+
+Command Line ARGUMENTS:
+from sys import argv -- import command line
+script, first, second, third = argv -- Pass the elements of the command line array to the variables.
+the first argument (argv[0] is always the script name.)
+
+""" - """ -- Everything between is a multi-line comment. 
+print """ <multi lines> """ -- Can also be used to create multiline strings.
+
+file_ptr = open(filename) -- Opens a file for reading.
+
+file_ptr.read() -- reads all the lines from a file.
+
+file_ptr.close() -- Close an open file.
+
+file_ptr = open(filename, 'w') -- Opens a file for writing to.  Truncates the file first.
+file_ptr = open(filename, 'r') -- Opens a file for reading.  Same as open(filename)
+file_ptr = open(filename, 'a') -- Opens a file for appending.  Same as 'w' but no truncation.
+file_ptr = open(filename, 'r+') -- Opens a file for reading and writing.  Pointer is set to the start of the file.
+file_ptr = open(filename, 'w+') -- Opens a file for writing and reading.  File is truncated first.
+
+file_ptr.truncate() -- Truncates a file.
+
+from os.path import exists
+exists(to_file) -- Returns true if to_file name exists.
+
+len(list) -- Returns the number of elements in a list.  A string is a list of characters.
+
+FUNCTIONS:
+
+def function_name(args): -- Function definition.  args is like argv.  It's a list of arguments.  Or you can use a comma separated list.
+    Indent function definition 4 spaces.
+    
+    function_name(arg1, arg2, arg3, ...) -> def function_name(*args) where args[0] = arg1, args[1] = arg2, ...
+    
+file_ptr.seek(0) -- Moves the file pointer back to the beginning.
+
+file_ptr.readline() -- Reads the next line of the file.
+
+return <something> -- Returns <something> from a function.
+
+*** Database & Queries ****
+import pymysql # may need to install.  It's a pure python replacement for MySQLdb.
+
+conn = pymysql.connect(host='localhost', port = 3306, user = 'root', passwd = 'Happy123', db = 'sakila')
+
+cur = conn.cursor()
+
+cur.execute('SELECT film_id, title FROM film')
+
+for row in cur:
+    print row
+    
+cur.close()
+conn.close()
+# ================================
+
+def somefunction(arg):
+    """What appears here will be what I get when I type help(somefunction)"""
+	
+	
